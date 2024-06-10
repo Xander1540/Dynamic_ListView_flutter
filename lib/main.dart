@@ -7,7 +7,6 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -32,17 +31,19 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
-
-    var arrNames = ['Xander', 'Aditya', 'Jessica', 'Raman', 'Rajan', 'Harsh'];
+    var arrNames = ['Xander', 'Aditya', 'Jessica', 'Raman', 'Rajan', 'Harsh', 'Ira', 'Isha', 'Saumya'];
 
     return Scaffold(
-      appBar: AppBar(
+        appBar: AppBar(
 
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+          backgroundColor: Theme
+              .of(context)
+              .colorScheme
+              .inversePrimary,
 
-        title: Text('Dynamic ListVsiew'),
-      ),
-      body:/* Padding(
+          title: Text('Dynamic ListVsiew'),
+        ),
+        body: /* Padding(
         padding: const EdgeInsets.all(20.0),
         child: ListView.builder(itemBuilder: (context, index){
             return Text(arrNames[index], style: TextStyle(fontSize: 30, fontWeight: FontWeight.w500),);
@@ -53,14 +54,19 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       )
         */
-        ListView.separated(itemBuilder: (context, index){
-          return Text(arrNames[index], style: TextStyle(fontSize: 30, fontWeight: FontWeight.w500));
+        ListView.separated(itemBuilder: (context, index) {
+          return ListTile(
+            leading: Text('${index+1}'),
+            title: Text(arrNames[index]),
+            subtitle: Text('Number'),
+            trailing: Icon(Icons.add),
+          );
         },
           itemCount: arrNames.length,
-          separatorBuilder: (context, index){
-          return Divider(height: 50, thickness: 4,);
-        },
+          separatorBuilder: (context, index) {
+            return Divider(height: 50, thickness: 4,);
+          },
         )
     );
   }
-}
+}//def
